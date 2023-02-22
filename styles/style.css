@@ -158,7 +158,7 @@ body {
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
   border: 2px solid black;
   transition: all 300ms;
-  padding: 20px;
+  padding: 15px;
   cursor: pointer;
 }
 .standings-header .col1 .season-form select {
@@ -271,7 +271,7 @@ body {
   text-align: center;
 }
 .standings-table tbody tr:nth-child(even) {
-  background-color: rgb(228, 228, 228);
+  background-color: rgb(160, 160, 160);
 }
 .standings-table tbody tr:hover {
   background-color: #2C74B3;
