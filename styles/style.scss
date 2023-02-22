@@ -18,12 +18,11 @@ body {
     background-color: $offwhite;
 }
 
-// navbar {
+// === NAVBAR === //
 .navbar {
     width: 100%;
     height: 80px;
-    background-color: rgb(0,0,0);
-    color: rgb(255, 255, 255);
+    color: $secondary-color;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -31,7 +30,7 @@ body {
     .logo {
         margin-left: 30px;
         font-family: 'Poppins';
-        font-size: 54px;
+        font-size: 50px;
     }
 
     .nav-links {
@@ -41,7 +40,7 @@ body {
             margin: 20px;
             font-size: 24px;
             text-decoration: none;
-            color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
             position: relative;
         }
 
@@ -155,229 +154,373 @@ body {
     }
 }
 
-// standings and statistics page
-.view--container {
-    background-color: #2C74B3;
-    width: 90%;
-    margin: 2rem auto;
+// === STANDINGS === //
+.standings-header {
+    width: 100%;
+    height: 50vh;
     display: flex;
-    flex-direction: column;
-    border: 3px solid rgb(0, 0, 0);
 
-    .view--header {
-        background-color: #144272;
-        color: white;
-        font-family: 'Playfair Display';
+    .stdheader {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .col1 {
+        width: 60%;
         display: flex;
         flex-direction: column;
-        width: 80%;
-        margin: 30px auto;
-        border: 3px solid rgb(228, 228, 228);
 
         h1 {
-            padding: 20px;
-            font-size: 42px;
-            letter-spacing: 3px;
-            text-align: center;
+            font-size: 63px;
+            font-family: 'Montserrat';
+            color: $primary-color;
         }
 
         .season-form {
-            text-align: center;
-            margin: 0 auto;
-            font-size: 28px;
-            padding-bottom: 20px;
+            padding: 7px 12px;
             display: flex;
-            justify-content: center;
-            align-items: center;
 
-            label {
-                color: $secondary-color;
-                margin-right: 5px;
-                font-size: 20px;
-            }
-
-            select, button{
-                border: 2px solid rgb(0, 0, 0);
-                box-shadow: 2px 3px 3px rgb(0, 0, 0);
-                height: 2.5rem;
-                margin-right: 5px;
-            }
-
-            select {
-                width: 10rem;
-            }
-
-            button {
+            .std-season-desc, button {
+                border-radius: 3rem;
                 background-color: rgb(255, 255, 255);
-                width: 3rem;
+                box-shadow: 0 2px 2px rgba(0, 0, 0, .7);
+                border: 2px solid black;
+                transition: all 300ms;
+                padding: 20px;
                 cursor: pointer;
             }
 
+            select {
+                text-align: center;
+                font-size: 20px;
+                border: none;
+            }
+
+            button {
+                border: 2px solid $primary-color;
+                font-size: 20px;
+                margin-left: 10px;
+            }
+
+            select:hover {
+                background-color: rgb(140, 140, 140);
+                color:rgb(0, 0, 0);
+            }
+
             button:hover {
-                background-color: $secondary-color;
-                color: rgb(0, 0, 0);
+                background-color: $primary-color;
+                border: 2px solid rgb(0, 0, 0);
+                color: rgb(255, 255, 255);
+            }
+
+            select:focus,
+            button:focus {
+                outline: none;
+            }
+
+            /* apply CSS to the select tag */
+            select {
+                /* for Firefox */
+                -moz-appearance: none;
+                /* for Safari, Chrome, Opera */
+                -webkit-appearance: none;
+            }
+
+            /* for IE10 */
+            select::-ms-expand {
+                display: none;
             }
         }
 
         .flash {
-            font-family: 'Montserrat';
+            font-family: 'Playfair Display';
             text-align: center;
-            width: 25%;
-            margin: 0 auto 8px auto;
+            margin: 0 auto;
         }
 
         .fail {
-            border-bottom: 2px solid red;
+            color: red;
         }
 
         .success {
-            border-bottom: 2px solid green;
+            color: green;
         }
     }
 
-    .team-info--wrapper {
-        background-color: #0A2647;
-        width: 90%;
-        margin: 0 auto;
-        border: 3px solid rgb(228, 228, 228);
+    .col2 {
+        width: 40%;
 
-        .team-text {
-            margin-left: 30px;
+        .standings-image {
+            width: 400px;
+            height: 250px;
+            border: 1px solid black;
+            margin-right: 4vw;
+            background-image: url('https://imgs.search.brave.com/mwt82WDEqdA9nMhk2WE8ZdU-dMvDFbsTnxdKec-Wdik/rs:fit:592:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC4t/YmRpRDZFYnA5UnNO/UjV1VExDRVpRSGFG/NyZwaWQ9QXBp');
+            background-repeat: no-repeat;
+            background-size: cover;
+            box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.7);
+        }
+    }
+}
+
+.standings-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    // table column widths
+    .stdtble-col1 {
+        width: 5%;
+    }
+    .stdtble-col2 {
+        width: 55%;
+    }
+    .stdtble-col3 {
+        width: 10%;
+    }
+    .stdtble-col4 {
+        width: 10%;
+    }
+    .stdtble-col5 {
+        width: 10%;
+    }
+
+    // header row
+    .header-row {
+        background-color: $tertiary-color;
+        color: $secondary-color;
+        border-bottom: 1px solid $offwhite;
+        
+        th {
             padding: 20px;
+            font-family: "Poppins";
+            font-size: 18px;
+        }
 
-            h1 {
-                color: $secondary-color;
-                font-size: 36px;
-                text-decoration: underline;
-            }
+        .name-col {
+            text-align: left;
+        }
 
-            h3, p, h4 {
-                margin: 20px 0 0 20px;
-                color: white;
-            }
-
-            p {
-                margin-left: 60px;
-                font-size: 24px;
-
-                span {
-                    color: $secondary-color;
-                }
-
-                .game-date {
-                    font-size: 16px;
-                    color: white;
-                }
-            }
-
-            .no-team-msg {
-                text-align: center;
-                margin: 0;
-            }
+        .right {
+            text-align: right;
         }
     }
 
-    .view--table {
-        border: 3px solid rgb(228, 228, 228);
-        border-collapse: collapse;
-        width: 90%;
-        margin: 10px auto 30px auto;
+    // table body
+    tbody {
 
-        // determine width of each column
-        // standings table
-        .column-one {
-            width: 5%;
-        }
-        .column-two {
-            width: 55%;
-        }
-        .column-three {
-            width: 10%;
-        }
-        .column-four {
-            width: 10%;
-        }
-        .column-five {
-            width: 10%;
-        }
+        tr {
+            background-color: white;
+            border-bottom: 1px solid rgb(105, 105, 105);
 
-        // games table
-        .game-column-one {
-            width: 25%;
-        }
-        .game-column-two {
-            width: 12.5%;
-        }
-        .game-column-three {
-            width: 5%;
-        }
-        .game-column-four {
-            width: 12.5%;
-        }
-        .game-column-five {
-            width: 25%;
-        }
-        .game-column-six {
-            width: 20%;
-        }
-
-        // header row
-        .header-row {
-            background-color: #0A2647;
-            color: white;
-            border-bottom: 1px solid $offwhite;
-            
-            th {
-                padding: 20px;
+            td {
+                padding: 10px;
             }
-
+            
+            // name column style
             .name-col {
-                text-align: left;
-                // padding-left: 2em;
+                padding-left: 1.2em;
+                cursor: pointer;
             }
 
             .right {
                 text-align: right;
             }
+
+            // center text of particular td's
+            .centered {
+                text-align: center;
+            }
         }
 
-        // table body
-        tbody {
+        tr:nth-child(even) {
+            background-color: $offwhite;
+        }
 
-            tr {
-                background-color: white;
-                border-bottom: 1px solid rgb(105, 105, 105);
+        tr:hover {
+            background-color: $primary-color;
+            color: rgb(255, 255, 255);
+        }
+    }
+}
 
-                td {
-                    padding: 10px;
+
+// === STATISTICS === //
+.stats--header {
+    display: flex;
+    width: 100%;
+    height: 80vh;
+
+    .stats-title {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        h1 {
+            font-size: 54px;
+            color: $primary-color;
+        }
+
+        .season-form {
+            padding: 7px 12px;
+            display: flex;
+
+            .stat-select, button {
+                border-radius: 3rem;
+                background-color: rgb(255, 255, 255);
+                box-shadow: 0 2px 2px rgba(0, 0, 0, .7);
+                border: 2px solid black;
+                transition: all 300ms;
+                padding: 20px;
+                cursor: pointer;
+            }
+
+            select {
+                text-align: center;
+                font-size: 20px;
+                border: none;
+            }
+
+            button {
+                border: 2px solid $primary-color;
+                font-size: 20px;
+                margin-left: 10px;
+            }
+
+            select:hover {
+                background-color: rgb(140, 140, 140);
+                color:rgb(0, 0, 0);
+            }
+
+            button:hover {
+                background-color: $primary-color;
+                border: 2px solid rgb(0, 0, 0);
+                color: rgb(255, 255, 255);
+            }
+
+            select:focus,
+            button:focus {
+                outline: none;
+            }
+
+            /* apply CSS to the select tag */
+            select {
+                /* for Firefox */
+                -moz-appearance: none;
+                /* for Safari, Chrome, Opera */
+                -webkit-appearance: none;
+            }
+
+            /* for IE10 */
+            select::-ms-expand {
+                display: none;
+            }
+        }
+    }
+
+    .stats-info {
+        margin-top: 20px;
+        width: 60%;
+        background-color: $tertiary-color;
+        border-radius: 3rem 0 0 3rem;
+        box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.7);
+        
+        h1 {
+            text-align: right;
+            margin: 20px 30px 0 0;
+            color: $secondary-color;
+            font-size: 42px;
+            text-decoration: underline;
+        }
+
+        .record {
+            text-align: right;
+            margin: 0 45px 0 0;
+            color:rgb(182, 88, 12);
+            font-size: 24px;
+        }
+        .small-rec {
+            font-size: 18px;
+        }
+
+        h4 {
+            margin-top: 20px;
+            font-size: 28px;
+            padding-left: 50px;
+            color: rgb(255, 255, 255);
+        }
+
+        .team-stat-table {
+            width: 100%;
+            margin: 0;
+            border-collapse: collapse;
+
+            .team-col1 {
+                width: 22.5%;
+            }
+            .team-col2 {
+                width: 5%;
+            }
+            .team-col3 {
+                width: 22.5%;
+            }
+            .team-col4 {
+                width: 25%;
+            }
+            .team-col5 {
+                width: 25%
+            }
+
+            .header-row {
+                background-color: rgb(0, 0, 0);
+                height: 40px;
+
+                th {
+                    color: $secondary-color;
+                    border-top: 1px solid white;
+                    border-bottom: 1px solid white;
                 }
-                
-                // name column style
-                .name-col {
-                    padding-left: 1.2em;
-                    cursor: pointer;
-                }
 
-                .right {
-                    text-align: right;
-                }
-
-                // center text of particular td's
                 .centered {
                     text-align: center;
                 }
             }
 
-            tr:nth-child(even) {
-                background-color: $offwhite;
-            }
+            // table body
+            tbody {
 
-            tr:hover {
-                background-color: #144272;
-                color: rgb(255, 255, 255);
+                tr {
+                    background-color: white;
+                    border-bottom: 1px solid rgb(105, 105, 105);
+
+                    td {
+                        padding: 10px;
+                    }
+                    
+                    // name column style
+                    .name-col {
+                        padding-left: 1.2em;
+                        cursor: pointer;
+                    }
+
+                    // center text of particular td's
+                    .centered {
+                        text-align: center;
+                    }
+                }
+
+                tr:nth-child(even) {
+                    background-color: $offwhite;
+                }
+
+                tr:hover {
+                    background-color: $primary-color;
+                    color: rgb(255, 255, 255);
+                }
             }
         }
-        
     }
 }
 
